@@ -2,7 +2,14 @@
 provider "aws" {
   region = "us-east-1"
 }
-
+terraform {
+  backend "s3" {
+    bucket = "tf-state-bucket020"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+    dynamodb_table = "TfState"
+  }
+}
 # Create an AWS Lambda function
 resource "aws_lambda_function" "example" {
   function_name = "upload_lambda"  # Name of the Lambda function
