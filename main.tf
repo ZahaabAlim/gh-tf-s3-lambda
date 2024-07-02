@@ -13,12 +13,12 @@ resource "aws_lambda_function" "example" {
   handler = var.lambda_handler  # Lambda function handler
   runtime = "python3.10"        # Python runtime version
 
-  role = aws_iam_role.iam_for_lambda.arn  # ARN of the IAM role
+  role = aws_iam_role.iam_for_lambda_role.arn  # ARN of the IAM role
 }
 
 # Create an IAM role for the Lambda function
-resource "aws_iam_role" "iam_for_lambda" {
-  name = "iam_for_lambda"  # Name of the IAM role
+resource "aws_iam_role" "iam_for_lambda_role" {
+  name = "iam_for_lambda_role"  # Name of the IAM role
 
   # Assume role policy allowing Lambda service to assume this role
   assume_role_policy = <<EOF
